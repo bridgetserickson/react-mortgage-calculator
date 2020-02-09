@@ -20,11 +20,11 @@ export default class App extends React.Component {
   };
 
   calculate(e) {
-    const principle = (this.state.balance);
-    const rate = (this.state.rate) / 100 / 12;
-    const term = (this.state.term) * 12;
+    const balance = this.state.balance;
+    const rate = this.state.rate / 100 / 12;
+    const term = this.state.term * 12;
     //Mortgage payment calculation, converted to currency format
-    let payment = (principle*(rate*Math.pow((1+rate ),term )/(Math.pow(1+rate,term)-1))).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    let payment = (balance*(rate*Math.pow((1+rate),term)/(Math.pow(1+rate,term)-1))).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
                          
     this.setState({submit: payment});
   }
@@ -50,4 +50,3 @@ export default class App extends React.Component {
     );
   }
 }
-
